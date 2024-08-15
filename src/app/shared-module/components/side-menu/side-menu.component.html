@@ -1,1 +1,45 @@
-<app-item></app-item>
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <img src="tableTrek.png" alt="Logo" />
+    <h2>TableTrek</h2>
+  </div>
+
+  <div class="sidebar-menu">MENU</div>
+
+  <nav class="sidebar-nav">
+    <div class="unorder">
+      <app-item *ngFor="let item of menuItems"
+                [name]="item.name"
+                [imgSrc]="item.imgSrc"
+                [router]="item.router"
+                [disable]="item.disable">
+      </app-item>
+    </div>
+  </nav>
+<!--  <nav class="sidebar-nav">-->
+<!--    <ul>-->
+<!--      <app-item *ngFor="let item of menuItems" [name]="item.name" [imgSrc]="item.imgSrc" [router]="item.router"></app-item>-->
+<!--    </ul>-->
+<!--  </nav>-->
+
+  <div class="sidebar-footer">
+    <div class="sidebar-report">REPORTS</div>
+    <nav class="sidebar-nav">
+      <div class="unorder">
+        <app-item *ngFor="let report of reportItems" [name]="report.name" [imgSrc]="report.imgSrc"></app-item>
+      </div>
+    </nav>
+
+    <div class="sidebar-delivery">
+      <img src="delivery.png" alt="Delivery Services" />
+      <h3>Delivery Service</h3>
+      <p>Every $20 purchase</p>
+      <button>Download App</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content Area -->
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>

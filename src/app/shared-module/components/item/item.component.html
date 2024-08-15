@@ -1,23 +1,6 @@
-<div class="sidebar">
-  <div class="logo">
-    <img src="" alt="Logo">
-    TableTrek
-  </div>
-  <ul class="menu">
-    <li><img src="dashboard.png"> <a href="#">Dashboard</a></li>
-    <li><a href="#" >Schedule</a></li>
-    <li><a href="#">Team</a></li>
-    <li><a href="#">Tasks</a></li>
-    <li><a href="#">Log Book</a></li>
-    <li><a href="#">Hiring</a></li>
-  </ul>
-  <div class="reports">
-    <h3>Reports</h3>
-    <ul class="menu">
-      <li><a href="#">Time Clocking</a></li>
-      <li><a href="#">Reports</a></li>
-      <li><a href="#">Apps & Integrations</a></li>
-      <li><a href="#">Payroll</a></li>
-    </ul>
-  </div>
+<div>
+  <a [routerLink]="router">
+    <img [src]="imgSrc" alt="{{ name }}" />
+    {{ name }}
+  </a>
 </div>

@@ -1,0 +1,19 @@
+.tab-container {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  background-color: white;
+  padding: 0 20px;
+}
+
+.tab-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  color: #4a4a4a;
+  text-align: center;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-item:hover {
+  background-color: #E9F2FF;
+  color: #333;
+}
