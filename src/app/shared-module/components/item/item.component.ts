@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-item',
@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ItemComponent {
 
+  @Input() name: string = '';
+  @Input() imgSrc: string = '';
+  @Input() router: string = '';
+  @Input() disable: boolean = false;
 }

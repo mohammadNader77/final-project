@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class SideMenuComponent {
 
+  menuItems = [
+    { name: 'Dashboard', imgSrc: 'dashboard.png', router: '/dashboard', disable:true },
+    { name: 'Schedule', imgSrc: 'schedual.png', router: '/schedule', disable: true },
+    { name: 'Team', imgSrc: 'team.png', router: '/team', disable: true },
+    { name: 'Tasks', imgSrc: 'tasks.png', router: '/tasks', disable: false },
+    { name: 'Log Book', imgSrc: 'log-book.png', router: '/log-book', disable: false },
+    { name: 'Hiring', imgSrc: 'hiring.png', router: '/hiring', disable: false },
+  ];
+
+  reportItems = [
+    { name: 'Time Clocking', imgSrc: 'time-clocking.png' },
+    { name: 'Reports', imgSrc: 'reports.png' },
+    { name: 'Apps & Integrations', imgSrc: 'apps.png' },
+    { name: 'Payroll', imgSrc: 'payroll.png' }
+  ];
 }
