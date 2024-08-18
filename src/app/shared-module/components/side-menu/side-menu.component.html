@@ -8,25 +8,30 @@
 
   <nav class="sidebar-nav">
     <div class="unorder">
-      <app-item *ngFor="let item of menuItems"
-                [name]="item.name"
-                [imgSrc]="item.imgSrc"
-                [router]="item.router"
-                [disable]="item.disable">
+      <app-item
+        *ngFor="let item of menuItems"
+        [name]="item.name"
+        [imgSrc]="item.imgSrc"
+        [router]="item.router"
+        [disable]="item.disable"
+        [activeItem]="activeItem"
+        (click)="setActiveItem(item.name)">
       </app-item>
     </div>
   </nav>
-<!--  <nav class="sidebar-nav">-->
-<!--    <ul>-->
-<!--      <app-item *ngFor="let item of menuItems" [name]="item.name" [imgSrc]="item.imgSrc" [router]="item.router"></app-item>-->
-<!--    </ul>-->
-<!--  </nav>-->
 
   <div class="sidebar-footer">
     <div class="sidebar-report">REPORTS</div>
     <nav class="sidebar-nav">
       <div class="unorder">
-        <app-item *ngFor="let report of reportItems" [name]="report.name" [imgSrc]="report.imgSrc"></app-item>
+        <app-item
+          *ngFor="let report of reportItems"
+          [name]="report.name"
+          [imgSrc]="report.imgSrc"
+          [disable]="report.disable"
+          [activeItem]="activeItem"
+          (click)="setActiveItem(report.name)">
+        </app-item>
       </div>
     </nav>
 
@@ -38,7 +43,6 @@
     </div>
   </div>
 </div>
-
 <!-- Main Content Area -->
 <div class="main-content">
   <router-outlet></router-outlet>

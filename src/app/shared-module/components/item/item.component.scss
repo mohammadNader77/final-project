@@ -4,7 +4,7 @@ div {
 
 div a {
   text-decoration: none;
-  color: #333;
+  color: black;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -16,11 +16,16 @@ div a {
 div a img {
   width: 20px;
   margin-right: 10px;
+  //color: white;
 }
 
 div a:hover,
 div a:focus,
 div a.active {
-  background-color: #E9F2FF;
-  color: #333;
+  border: 1px solid #2F5A76;
+  background-color: #2F5A76;
+  color: white;
 }
+
+
+

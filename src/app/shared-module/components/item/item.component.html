@@ -1,6 +1,10 @@
+
 <div>
-  <a [routerLink]="router">
+  <a [routerLink]="router"
+     (click)="setActive()"
+     [ngClass]="{'active': isActive }">
     <img [src]="imgSrc" alt="{{ name }}" />
     {{ name }}
   </a>
 </div>
+
