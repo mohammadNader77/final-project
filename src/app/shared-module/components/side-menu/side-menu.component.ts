@@ -17,9 +17,16 @@ export class SideMenuComponent {
   ];
 
   reportItems = [
-    { name: 'Time Clocking', imgSrc: 'time-clocking.png' },
-    { name: 'Reports', imgSrc: 'reports.png' },
-    { name: 'Apps & Integrations', imgSrc: 'apps.png' },
-    { name: 'Payroll', imgSrc: 'payroll.png' }
+    { name: 'Time Clocking', imgSrc: 'time-clocking.png', disable: true },
+    { name: 'Reports', imgSrc: 'reports.png' , disable: true},
+    { name: 'Apps & Integrations', imgSrc: 'apps.png', disable: true },
+    { name: 'Payroll', imgSrc: 'payroll.png', disable: true }
   ];
+
+
+  activeItem = 'Home'; // Default active item, you can change this as needed
+
+  setActiveItem(itemName: string) {
+    this.activeItem = itemName;
+  }
 }

@@ -4,10 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModuleModule } from './shared-module/shared-module.module';
+import {AddTimeOffComponent} from "./schedule/schedule/request/add-time-off/add-time-off.component";
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
+
   ],
   imports: [
     SharedModuleModule,
@@ -18,3 +20,4 @@ import { SharedModuleModule } from './shared-module/shared-module.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

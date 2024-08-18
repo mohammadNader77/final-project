@@ -4,7 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { ItemComponent } from './components/item/item.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import {RouterLink, RouterOutlet} from "@angular/router";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {DashModule} from "../dashboard/dashboard.module";
 import {ScheduleModule} from "../schedule/schedule.module";
 
@@ -17,16 +17,18 @@ import {ScheduleModule} from "../schedule/schedule.module";
     ItemComponent,
     UserProfileComponent
   ],
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterLink,
-    DashModule,
-    ScheduleModule
-  ],
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        RouterLink,
+        DashModule,
+        ScheduleModule,
+        RouterLinkActive
+    ],
   exports: [
     HeaderComponent,
-    SideMenuComponent
+    SideMenuComponent,
+
   ]
 })
 export class SharedModuleModule { }

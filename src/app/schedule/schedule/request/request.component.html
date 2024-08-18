@@ -9,16 +9,53 @@
         <option value="location3">Location 3</option>
       </select>
 
-      <button class="sort-button">
+      <button class="sort-button" (click)="onSort()">
         <img src="sort.png" alt="Sort Icon" class="sort-icon">
         Sort
       </button>
     </div>
 
-    <button class="add-button">
+    <button
+      routerLink="/schedule/request/add-time-off"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="add-button" (click)="addTimeOff()">
       <i>+</i> Add time off
     </button>
   </div>
 </div>
 
-
+<!--  <div class="row">-->
+<!--    <div *ngFor="let user of users" class="col-md-4">-->
+<!--      <div class="card">-->
+<!--        <div class="card-body">-->
+<!--          <h5 class="card-title">{{ user.name }}</h5>-->
+<!--          <p class="card-text">Submitted by: {{ user.submittedBy }}</p>-->
+<!--          <p class="card-text">Date Submitted: {{ user.dateSubmitted }}</p>-->
+<!--          <p class="card-text">Category: {{ user.category }}</p>-->
+<!--          <p class="card-text">Time of Request: {{ user.timeOfRequest }}</p>-->
+<!--          <span class="badge bg-success">{{ user.status }}</span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<div class="time-off-container">
+  <div class="time-off-list">
+    <div class="time-off-card" *ngFor="let timeOff of users">
+      <div class="card-header">
+        <img [src]="timeOff.imageUrl" alt="Profile Image" class="profile-image" />
+        <div class="card-header-details">
+          <h3>{{ timeOff.name }}</h3>
+          <p>By: {{ timeOff.submittedBy }}</p>
+        </div>
+        <div class="menu-button">⋮</div>
+      </div>
+      <div class="card-details">
+        <p><strong>Date submitted:</strong> <span>{{ timeOff.dateSubmitted | date: 'MMM d, y' }}</span></p>
+        <p><strong>Category:</strong> <span>{{ timeOff.category }}</span></p>
+        <p><strong>Time of requested:</strong> <span>{{ timeOff.timeOfRequest | date: 'MMM d, y, h:mm a' }}</span></p>
+        <p><strong>Status:</strong> <span class="status">{{ timeOff.status }}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
