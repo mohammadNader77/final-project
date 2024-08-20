@@ -7,10 +7,18 @@ import { CalenderComponent } from './schedule/calender/calender.component';
 import { BlockedDaysComponent } from './schedule/blocked-days/blocked-days.component';
 import { AddTimeOffComponent } from './schedule/request/add-time-off/add-time-off.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { UserCardComponent } from './schedule/request/user-card/user-card.component';
+import {LoadingSpinner} from "./schedule/loading-spinner/loading-spinner";
 
 
 @NgModule({
-  declarations: [ScheduleComponent,RequestComponent, CalenderComponent, BlockedDaysComponent, AddTimeOffComponent],
+  declarations: [ScheduleComponent,
+    RequestComponent,
+    CalenderComponent,
+    BlockedDaysComponent,
+    AddTimeOffComponent,
+    UserCardComponent,
+    LoadingSpinner],
   exports: [
     ScheduleComponent,
     AddTimeOffComponent

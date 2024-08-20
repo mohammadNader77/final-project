@@ -17,7 +17,6 @@ const routes: Routes = [
       { path: 'blocked-days', component: BlockedDaysComponent },
       { path: '', redirectTo: 'request', pathMatch: 'full' }
       ]
-
   },
  ]
 

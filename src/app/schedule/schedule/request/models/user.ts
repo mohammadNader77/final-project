@@ -1,10 +1,11 @@
-// src/app/models/user.model.ts
+import {Employee} from "./employee";
+
 export interface User {
-  name: string;
-  imageUrl: string;
+
+  employee: Employee;
   submittedBy: string;
-  dateSubmitted: string;
+  fromDate: string;
   category: string;
-  timeOfRequest: string;
+  toDate: string;
   status: string;
 }
