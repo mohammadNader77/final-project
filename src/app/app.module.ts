@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModuleModule } from './shared-module/shared-module.module';
 import {AddTimeOffComponent} from "./schedule/schedule/request/add-time-off/add-time-off.component";
+import {LoadingSpinner} from "./schedule/schedule/loading-spinner/loading-spinner";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
 
   ],
   imports: [

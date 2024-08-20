@@ -1,0 +1,23 @@
+<div class="time-off-card">
+  <div class="card-header">
+    <img [src]="user.employee.imageUrl" alt="Profile Image" class="profile-image" />
+    <div class="card-header-details">
+      <h3>{{ user.employee.name }}</h3>
+      <p>By: {{ user.submittedBy }}</p>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropdown-btn">⋮</button>
+      <div class="dropdown-content">
+        <a (click)="edit()">Edit</a>
+        <a (click)="deleteTimeOff()">Delete</a>
+      </div>
+    </div>
+  </div>
+  <div class="card-details">
+    <p><strong>Date submitted:</strong> <span>{{ user.fromDate | date: 'MMM d, y' }}</span></p>
+    <p><strong>Category:</strong> <span>{{ user.category }}</span></p>
+    <p><strong>Time of request:</strong> <span>{{ user.toDate | date: 'MMM d, y, h:mm a' }}</span></p>
+    <p><strong>Status:</strong> <span class="status">{{ user.status }}</span></p>
+  </div>
+</div>

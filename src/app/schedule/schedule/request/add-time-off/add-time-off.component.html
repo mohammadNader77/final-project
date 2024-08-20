@@ -1,83 +1,63 @@
-<!--&lt;!&ndash; src/app/add-time-off/add-time-off.component.html &ndash;&gt;-->
-<!--<div class="form-container">-->
-<!--  <h2>Add New Time Off</h2>-->
-<!--  <form [formGroup]="timeOffForm" (ngSubmit)="onSubmit()">-->
-<!--    <label for="name">Name:</label>-->
-<!--    <input id="name" formControlName="name" type="text" required>-->
-<!--    <div *ngIf="timeOffForm.controls['name'].invalid && timeOffForm.controls['name'].touched">-->
-<!--      <small>Name is required.</small>-->
-<!--    </div>-->
-
-<!--    <label for="submittedBy">Submitted By:</label>-->
-<!--    <input id="submittedBy" formControlName="submittedBy" type="text" required>-->
-<!--    <div *ngIf="timeOffForm.controls['submittedBy'].invalid && timeOffForm.controls['submittedBy'].touched">-->
-<!--      <small>Submitted By is required.</small>-->
-<!--    </div>-->
-
-<!--    <label for="dateSubmitted">Date Submitted:</label>-->
-<!--    <input id="dateSubmitted" formControlName="dateSubmitted" type="date" required>-->
-<!--    <div *ngIf="timeOffForm.controls['dateSubmitted'].invalid && timeOffForm.controls['dateSubmitted'].touched">-->
-<!--      <small>Date Submitted is required.</small>-->
-<!--    </div>-->
-
-<!--    <label for="category">Category:</label>-->
-<!--    <input id="category" formControlName="category" type="text" required>-->
-<!--    <div *ngIf="timeOffForm.controls['category'].invalid && timeOffForm.controls['category'].touched">-->
-<!--      <small>Category is required.</small>-->
-<!--    </div>-->
-
-<!--    <label for="timeOfRequest">Time of Request:</label>-->
-<!--    <input id="timeOfRequest" formControlName="timeOfRequest" type="datetime-local" required>-->
-<!--    <div *ngIf="timeOffForm.controls['timeOfRequest'].invalid && timeOffForm.controls['timeOfRequest'].touched">-->
-<!--      <small>Time of Request is required.</small>-->
-<!--    </div>-->
-
-<!--    <label for="status">Status:</label>-->
-<!--    <select id="status" formControlName="status" required>-->
-<!--      <option value="Approved">Approved</option>-->
-<!--      <option value="Pending">Pending</option>-->
-<!--    </select>-->
-
-<!--    <button type="submit" [disabled]="timeOffForm.invalid">Add Time Off</button>-->
-<!--  </form>-->
-<!--</div>-->
-<!-- -->
 <div class="container">
   <div class="form-header">
-    <h1>Add Time Off</h1>
+    <h1>Time Off</h1>
     <button type="button" class="btn-close" (click)="onCancel()">X</button>
   </div>
 
-  <form [formGroup]="timeOffForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input id="name" class="form-control" formControlName="name" />
+  <form [formGroup]="timeOffForm">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="employeeId">Employee</label>
+        <select id="employeeId" class="form-control" formControlName="employeeId">
+          <option value="">Select Employee</option>
+          <option *ngFor="let employee of employees" [value]="employee.id">{{ employee.name }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" class="form-control" formControlName="category">
+          <option value="Unpaid Time Off">Unpaid Time Off</option>
+          <option value="Paid Time Off">Paid Time Off</option>
+        </select>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="submittedBy">Submitted By</label>
-      <input id="submittedBy" class="form-control" formControlName="submittedBy" />
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" class="form-control" formControlName="status">
+          <option value="Approved">Approved</option>
+          <option value="Pending">Pending</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="duration">Duration</label>
+        <select id="duration" class="form-control" formControlName="duration">
+          <option value="Full day">Full day</option>
+          <option value="Half day">Half day</option>
+        </select>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="dateSubmitted">Date Submitted</label>
-      <input id="dateSubmitted" type="date" class="form-control" formControlName="dateSubmitted" />
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fromDate">From</label>
+        <input id="fromDate" type="date" class="form-control" formControlName="fromDate" />
+      </div>
+      <div class="form-group">
+        <label for="toDate">To</label>
+        <input id="toDate" type="date" class="form-control" formControlName="toDate" />
+      </div>
     </div>
+
     <div class="form-group">
-      <label for="category">Category</label>
-      <input id="category" class="form-control" formControlName="category" />
+      <label for="comment">Comment</label>
+      <textarea id="comment" class="form-control" formControlName="comment" rows="3" placeholder="Add your comment"></textarea>
     </div>
-    <div class="form-group">
-      <label for="timeOfRequest">Time of Request</label>
-      <input id="timeOfRequest" type="datetime-local" class="form-control" formControlName="timeOfRequest" />
-    </div>
-    <div class="form-group">
-      <label for="status">Status:</label>
-          <select id="status" formControlName="status" required>
-            <option value="Approved">Approved</option>
-            <option value="Pending">Pending</option>
-          </select>
-    </div>
+
     <div class="form-actions">
-      <button type="submit" class="btn btn-primary" [disabled]="!timeOffForm.valid">Submit</button>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
       <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
     </div>
   </form>
