@@ -9,6 +9,7 @@ import { AddTimeOffComponent } from './schedule/request/add-time-off/add-time-of
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserCardComponent } from './schedule/request/user-card/user-card.component';
 import {LoadingSpinner} from "./schedule/loading-spinner/loading-spinner";
+import { PaginationComponent } from './schedule/request/pagination/pagination.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {LoadingSpinner} from "./schedule/loading-spinner/loading-spinner";
     BlockedDaysComponent,
     AddTimeOffComponent,
     UserCardComponent,
-    LoadingSpinner],
+    LoadingSpinner,
+    PaginationComponent],
   exports: [
     ScheduleComponent,
     AddTimeOffComponent

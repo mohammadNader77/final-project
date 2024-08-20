@@ -9,6 +9,7 @@ import {Employee} from "../models/employee";
 export class UserService {
   private users: User[] = [
     {
+      id: 1,
       employee: {
         id: 1,
         name: 'John Doe',
@@ -21,6 +22,163 @@ export class UserService {
       status: 'Approved',
     },
     {
+      id: 2,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 3,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 4,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 5,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 6,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 7,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 8,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 9,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 10,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 11,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 12,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 13,
+      employee: {
+        id: 2,
+        name: 'ahmed',
+        imageUrl: 'user.png',
+      },
+      submittedBy: 'Admin',
+      fromDate: '2024-08-01',
+      category: 'Unpaid Time Off',
+      toDate: '2024-08-01 12:15 AM',
+      status: 'Approved',
+    },
+    {
+      id: 14,
       employee: {
         id: 2,
         name: 'ahmed',
@@ -92,10 +250,32 @@ export class UserService {
     return of(this.users).pipe(
       delay(Math.random() * this.MAX_TIME),
       tap(() => {
+        user.id = this.users.length+5;
         this.users.push(user);
       }),
       tap(() => {
         console.log('New user added:', user);
+      })
+    );
+  }
+  getUserById(id: number): Observable<User | undefined> {
+    return of(this.users.find(user => user.employee.id === id)).pipe(
+      delay(Math.random() * this.MAX_TIME),
+      tap((data) => console.log('Fetched user:', data))
+    );
+  }
+
+  updateUser(updatedUser: User): Observable<User[]> {
+    return of(this.users).pipe(
+      delay(Math.random() * this.MAX_TIME),
+      tap(() => {
+        const index = this.users.findIndex(user => user.id === updatedUser.id);
+        if (index !== -1) {
+          this.users[index] = updatedUser;
+        }
+      }),
+      tap(() => {
+        console.log('User updated:', updatedUser);
       })
     );
   }

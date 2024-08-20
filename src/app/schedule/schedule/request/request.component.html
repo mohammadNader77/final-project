@@ -23,18 +23,24 @@
   </div>
 </div>
 
-
 <div class="spinner">
   <app-spinner *ngIf="isLoading"></app-spinner>
 </div>
 
-
 <div class="time-off-container" *ngIf="!isLoading">
   <div class="time-off-list">
-<!--    <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>-->
-    <div *ngFor="let user of users">
-      <app-user-card [user]="user" (delete)="onDelete(user)"></app-user-card>
+    <div *ngFor="let user of paginatedUsers">
+      <app-user-card [user]="user" (delete)="onDelete(user)" (edit)="onEdit(user)"></app-user-card>
     </div>
-
   </div>
+  <app-pagination
+    [totalItems]="users.length"
+    [itemsPerPage]="itemsPerPage"
+    [currentPage]="currentPage"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
+</div>
+
+<div *ngIf="isEditing && editingUser">
+  <app-add-time-off [userToEdit]="editingUser" (saveEdit)="saveEdit($event)"></app-add-time-off>
 </div>
