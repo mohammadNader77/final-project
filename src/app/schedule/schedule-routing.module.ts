@@ -12,7 +12,14 @@ const routes: Routes = [
     component: ScheduleComponent,
     children: [
       { path: 'request', component: RequestComponent },
-      { path: 'add-time-off', component: AddTimeOffComponent },
+      {
+        path: 'add-time-off/:id',
+        component: AddTimeOffComponent
+      },
+      {
+        path: 'add-time-off',
+        component: AddTimeOffComponent
+      },
       { path: 'calendar', component: CalenderComponent },
       { path: 'blocked-days', component: BlockedDaysComponent },
       { path: '', redirectTo: 'request', pathMatch: 'full' }

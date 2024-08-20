@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-schedule',
@@ -8,9 +7,9 @@ import { filter } from 'rxjs/operators';
   styleUrl: './schedule.component.scss'
 })
 export class ScheduleComponent implements OnInit {
-  currentRoute: string = '';
 
-  constructor(private router: Router) { }
+
+  constructor() { }
 
   ngOnInit(): void {
 

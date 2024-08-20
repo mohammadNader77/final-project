@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../models/user';
-import {Employee} from "../models/employee";
+import { Employee } from "../models/employee";
 
 @Component({
   selector: 'app-add-time-off',
@@ -11,20 +11,38 @@ import {Employee} from "../models/employee";
   styleUrls: ['./add-time-off.component.scss']
 })
 export class AddTimeOffComponent implements OnInit {
+  @Input() userToEdit: User | null = null;
+  @Output() saveEdit = new EventEmitter<User>();
+
   timeOffForm: FormGroup = new FormGroup({});
   employees: Employee[] = [];
   selectedEmployee: Employee | null = null;
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((users: Employee[]) => {
-      this.employees = users.map(user => user);
+    this.route.paramMap.subscribe(params => {
+      const userId = params.get('id');
+      if (userId) {
+        this.userService.getUserById(+userId).subscribe(user => {
+          if (user) {
+            this.userToEdit = user;
+            this.populateForm(user);
+          } else {
+            console.error('User not found');
+            this.router.navigate(['/schedule/request']);
+          }
+        });
+      }
     });
 
+    this.userService.getUsers().subscribe((employees: Employee[]) => {
+      this.employees = employees;
+    });
 
     this.timeOffForm = new FormGroup({
       employeeId: new FormControl('', Validators.required),
@@ -41,33 +59,45 @@ export class AddTimeOffComponent implements OnInit {
     });
   }
 
+  populateForm(user: User): void {
+    this.timeOffForm.patchValue({
+      employeeId: user.employee.id,
+      category: user.category,
+      status: user.status,
+      duration: 'Full day',
+      fromDate: user.fromDate,
+      toDate: user.toDate,
+      comment: '',
+    });
+  }
+
+
   onSubmit(): void {
     if (this.timeOffForm.valid) {
       const formValue = this.timeOffForm.value;
-
       const selectedEmployee = this.employees.find(emp => emp.id === +formValue.employeeId);
 
       if (selectedEmployee) {
-        const newUser: User = {
+        const updatedUser: User = {
           employee: selectedEmployee,
-          submittedBy: selectedEmployee.name, // Assuming the employee name is the submitter
+          submittedBy: selectedEmployee.name,
           fromDate: formValue.fromDate,
           category: formValue.category,
           toDate: formValue.toDate,
           status: formValue.status,
         };
 
-        console.log('Form Data:', newUser);
-
-        // Add the new user through the service
-        this.userService.addUser(newUser).subscribe(() => {
-          this.router.navigate(['/schedule/request']);
-        });
-      } else {
-        console.error('Selected employee not found');
+        if (this.userToEdit) {
+          this.userService.updateUser(updatedUser).subscribe(() => {
+            this.saveEdit.emit(updatedUser);
+            this.router.navigate(['/schedule/request']);
+          });
+        } else {
+          this.userService.addUser(updatedUser).subscribe(() => {
+            this.router.navigate(['/schedule/request']);
+          });
+        }
       }
-    } else {
-      console.error('Form is not valid');
     }
   }
 

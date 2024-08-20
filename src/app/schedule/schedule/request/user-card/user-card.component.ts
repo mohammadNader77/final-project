@@ -9,8 +9,10 @@ import { User } from "../models/user";
 export class UserCardComponent {
   @Input() user!: User;
   @Output() delete = new EventEmitter<User>();
+  @Output() edit = new EventEmitter<User>();
 
-  edit() {
+  editTimeOff() {
+    this.edit.emit(this.user);
   }
 
   deleteTimeOff() {

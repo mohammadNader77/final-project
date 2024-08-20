@@ -9,11 +9,12 @@
     <div class="dropdown">
       <button class="dropdown-btn">⋮</button>
       <div class="dropdown-content">
-        <a (click)="edit()">Edit</a>
+        <a (click)="editTimeOff()">Edit</a>
         <a (click)="deleteTimeOff()">Delete</a>
       </div>
     </div>
   </div>
+
   <div class="card-details">
     <p><strong>Date submitted:</strong> <span>{{ user.fromDate | date: 'MMM d, y' }}</span></p>
     <p><strong>Category:</strong> <span>{{ user.category }}</span></p>
