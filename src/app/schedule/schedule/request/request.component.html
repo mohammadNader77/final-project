@@ -37,7 +37,8 @@
     [totalItems]="users.length"
     [itemsPerPage]="itemsPerPage"
     [currentPage]="currentPage"
-    (pageChange)="onPageChange($event)">
+    (pageChange)="onPageChange($event)"
+    (itemsPerPageChange)="onItemsPerPage($event)">
   </app-pagination>
 </div>
 

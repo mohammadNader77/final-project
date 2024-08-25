@@ -37,7 +37,7 @@ export class UserService {
     {
       id: 3,
       employee: {
-        id: 2,
+        id: 3,
         name: 'ahmed',
         imageUrl: 'user.png',
       },
@@ -50,7 +50,7 @@ export class UserService {
     {
       id: 4,
       employee: {
-        id: 2,
+        id: 4,
         name: 'ahmed',
         imageUrl: 'user.png',
       },
@@ -63,7 +63,7 @@ export class UserService {
     {
       id: 5,
       employee: {
-        id: 2,
+        id: 5,
         name: 'ahmed',
         imageUrl: 'user.png',
       },
@@ -76,7 +76,7 @@ export class UserService {
     {
       id: 6,
       employee: {
-        id: 2,
+        id: 6,
         name: 'ahmed',
         imageUrl: 'user.png',
       },
@@ -89,8 +89,8 @@ export class UserService {
     {
       id: 7,
       employee: {
-        id: 2,
-        name: 'ahmed',
+        id: 7,
+        name: 'osama',
         imageUrl: 'user.png',
       },
       submittedBy: 'Admin',
@@ -102,8 +102,8 @@ export class UserService {
     {
       id: 8,
       employee: {
-        id: 2,
-        name: 'ahmed',
+        id: 8,
+        name: 'nor',
         imageUrl: 'user.png',
       },
       submittedBy: 'Admin',
@@ -115,8 +115,8 @@ export class UserService {
     {
       id: 9,
       employee: {
-        id: 2,
-        name: 'ahmed',
+        id: 9,
+        name: 'mohammad',
         imageUrl: 'user.png',
       },
       submittedBy: 'Admin',
@@ -128,7 +128,7 @@ export class UserService {
     {
       id: 10,
       employee: {
-        id: 2,
+        id: 10,
         name: 'ahmed',
         imageUrl: 'user.png',
       },
@@ -141,8 +141,8 @@ export class UserService {
     {
       id: 11,
       employee: {
-        id: 2,
-        name: 'ahmed',
+        id: 11,
+        name: 'yazan',
         imageUrl: 'user.png',
       },
       submittedBy: 'Admin',
@@ -154,7 +154,7 @@ export class UserService {
     {
       id: 12,
       employee: {
-        id: 2,
+        id: 12,
         name: 'ahmed',
         imageUrl: 'user.png',
       },
@@ -167,7 +167,7 @@ export class UserService {
     {
       id: 13,
       employee: {
-        id: 2,
+        id: 13,
         name: 'ahmed',
         imageUrl: 'user.png',
       },
@@ -180,7 +180,7 @@ export class UserService {
     {
       id: 14,
       employee: {
-        id: 2,
+        id: 14,
         name: 'ahmed',
         imageUrl: 'user.png',
       },
@@ -205,6 +205,7 @@ export class UserService {
       imageUrl: 'user.png',
     },
 
+
     {
       id: 3,
       name: '3',
@@ -228,6 +229,7 @@ export class UserService {
       name: '6',
       imageUrl: 'user.png',
     },
+
 
   ];
 
@@ -269,7 +271,7 @@ export class UserService {
     return of(this.users).pipe(
       delay(Math.random() * this.MAX_TIME),
       tap(() => {
-        const index = this.users.findIndex(user => user.id === updatedUser.id);
+        const index = this.users.findIndex(user => user.employee.id === updatedUser.employee.id);
         if (index !== -1) {
           this.users[index] = updatedUser;
         }

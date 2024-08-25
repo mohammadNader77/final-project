@@ -1,6 +1,7 @@
-<!--<app-header></app-header>-->
-<!--<app-side-menu></app-side-menu>-->
-<div class="app-container">
+<div *ngIf="!isLoggedIn">
+  <app-login (loginSuccess)="onLoginSuccess()"></app-login>
+</div>
+<div class="app-container" *ngIf="isLoggedIn">
   <app-side-menu></app-side-menu>
   <div class="main-content">
     <app-header></app-header>
