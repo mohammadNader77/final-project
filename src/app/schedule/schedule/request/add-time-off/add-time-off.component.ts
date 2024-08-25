@@ -17,6 +17,7 @@ export class AddTimeOffComponent implements OnInit {
   timeOffForm: FormGroup = new FormGroup({});
   employees: Employee[] = [];
   selectedEmployee: Employee | null = null;
+  isLoading = false;
 
   constructor(
     private userService: UserService,
@@ -71,34 +72,40 @@ export class AddTimeOffComponent implements OnInit {
     });
   }
 
-
   onSubmit(): void {
-    if (this.timeOffForm.valid) {
-      const formValue = this.timeOffForm.value;
-      const selectedEmployee = this.employees.find(emp => emp.id === +formValue.employeeId);
+    // this.isLoading = true;
+    // setTimeout(() => {
+    //   this.isLoading = false;
 
-      if (selectedEmployee) {
-        const updatedUser: User = {
-          employee: selectedEmployee,
-          submittedBy: selectedEmployee.name,
-          fromDate: formValue.fromDate,
-          category: formValue.category,
-          toDate: formValue.toDate,
-          status: formValue.status,
-        };
+      if (this.timeOffForm.valid) {
+        const formValue = this.timeOffForm.value;
+        const selectedEmployee = this.employees.find(emp => emp.id === +formValue.employeeId);
 
-        if (this.userToEdit) {
-          this.userService.updateUser(updatedUser).subscribe(() => {
-            this.saveEdit.emit(updatedUser);
-            this.router.navigate(['/schedule/request']);
-          });
-        } else {
-          this.userService.addUser(updatedUser).subscribe(() => {
-            this.router.navigate(['/schedule/request']);
-          });
+        if (selectedEmployee) {
+          const updatedUser: User = {
+            employee: selectedEmployee,
+            submittedBy: selectedEmployee.name,
+            fromDate: formValue.fromDate,
+            category: formValue.category,
+            toDate: formValue.toDate,
+            status: formValue.status,
+          };
+
+          if (this.userToEdit) {
+            this.userService.updateUser(updatedUser).subscribe(() => {
+              this.saveEdit.emit(updatedUser);
+              this.router.navigate(['/schedule/request']);
+            });
+          } else {
+            this.userService.addUser(updatedUser).subscribe(() => {
+              this.router.navigate(['/schedule/request']);
+            });
+          }
         }
       }
-    }
+
+    // }, 1000);
+
   }
 
   onCancel(): void {

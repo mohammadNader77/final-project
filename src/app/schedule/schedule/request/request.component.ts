@@ -82,4 +82,13 @@ export class RequestComponent implements OnInit {
     }
     this.updatePaginatedUsers();
   }
+
+  onItemsPerPage(itemsPerPage: number): void {
+    if (itemsPerPage > 0) {
+      this.itemsPerPage = itemsPerPage;
+      this.currentPage = 1;
+      this.updatePaginatedUsers();
+    }
+  }
 }
+

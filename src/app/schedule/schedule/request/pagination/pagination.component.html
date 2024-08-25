@@ -1,5 +1,27 @@
-<div class="pagination">
+<!--<div class="pagination">-->
+<!--  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>-->
+<!--  <span>Page {{currentPage}} of {{totalPages}}</span>-->
+<!--  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>-->
+<!--</div>-->
+<div class="pagination-controls">
   <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-  <span>Page {{currentPage}} of {{totalPages}}</span>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
   <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+
+
+<label for="numberOfItemInPage">Items per page:</label>
+<select id="numberOfItemInPage" (change)="onItemsPerPageChange($event)">
+  <option>select number of item</option>
+  <option [value]="2">2</option>
+  <option [value]="5">5</option>
+  <option [value]="10">10</option>
+  <option [value]="12">12</option>
+</select>
+<!--  <label for="numberOfItemInPage">Items per page:</label>-->
+<!--  <select id="numberOfItemInPage" [(ngModel)]="itemsPerPage" (ngModelChange)="onItemsPerPage($event)">-->
+<!--    <option [value]="2">2</option>-->
+<!--    <option [value]="5">5</option>-->
+<!--    <option [value]="10">10</option>-->
+<!--    <option [value]="12">12</option>-->
+<!--  </select>-->
 </div>

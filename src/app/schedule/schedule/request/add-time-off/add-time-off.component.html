@@ -57,8 +57,26 @@
     </div>
 
     <div class="form-actions">
-      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()" >Submit</button>
       <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
     </div>
+<!--    <div class="form-actions">-->
+<!--      <button-->
+<!--        type="submit"-->
+<!--        class="btn btn-primary"-->
+<!--        (click)="onSubmit()"-->
+<!--        [disabled]="isLoading"> &lt;!&ndash; Disable button when loading &ndash;&gt;-->
+<!--        Submit-->
+<!--      </button>-->
+<!--      <app-spinner *ngIf="isLoading"></app-spinner> &lt;!&ndash; Show spinner conditionally &ndash;&gt;-->
+<!--      <button-->
+<!--        type="button"-->
+<!--        class="btn btn-secondary"-->
+<!--        (click)="onCancel()"-->
+<!--        [disabled]="isLoading"> &lt;!&ndash; Disable cancel button when loading &ndash;&gt;-->
+<!--        Cancel-->
+<!--      </button>-->
+<!--    </div>-->
+
   </form>
 </div>
